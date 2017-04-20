@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <Button
+        android:id="@+id/bAdicionar"
+        android:layout_width="384dp"
+        android:layout_height="68dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="onClickAdicionar"
+        android:text="Adicionar Filme"
+        android:layout_alignParentEnd="true" />
+
+    <ListView
+        android:id="@+id/lvListaFilmes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignEnd="@+id/bAdicionar"
+        android:layout_alignStart="@+id/bAdicionar"
+        android:layout_below="@+id/bAdicionar" />
+
+</RelativeLayout>
