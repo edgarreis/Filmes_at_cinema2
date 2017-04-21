@@ -69,7 +69,7 @@ public class DadosFilmes extends AppCompatActivity {
             fComentario.setText(sComentario);
     }
 
-    // Verificar esse método !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Verificar esse método !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
