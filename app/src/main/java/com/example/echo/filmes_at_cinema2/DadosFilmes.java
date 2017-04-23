@@ -1,8 +1,10 @@
 package com.example.echo.filmes_at_cinema2;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,35 +12,47 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// TODO: Arrumar os ICONES SHARE E EDIT
 public class DadosFilmes extends AppCompatActivity {
 
     // ArrayList, estrutura de dados contendo os filmes vistos
     ArrayList<Filme> alFilme;
+    int filmePos;
+    ActionBar ab;
+    Bundle extras;
+    Filme filme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dados_filmes);
 
-        Bundle extras = getIntent().getExtras();
+        extras = getIntent().getExtras();
         if (extras == null){
             return;
         }
 
         // Acessa a Action bar
-        ActionBar ab = getSupportActionBar();
+        ab = getSupportActionBar();
         // Seta Retorno na Action Bar
         ab.setDisplayHomeAsUpEnabled(true);
 
         // Pega código do Filme
-        int filmePos = Integer.parseInt(extras.getString("filmeId"));
+        filmePos = Integer.parseInt(extras.getString("FilmeId"));
+        this.mostraDadosFilme();
+
+
+    }
+
+    public void mostraDadosFilme(){
+
         // Pegar os Filmes
         alFilme = ListaFilmes.getsListaFilmes(getApplicationContext()).getAlFilmes();
         // alFilme pega o ArrayLista via método get (getAlFimes)
         // da lista filme atraves do método static getsListaFilmes
 
         // Pega o Filme em questão
-        Filme filme = alFilme.get(filmePos);
+        filme = alFilme.get(filmePos);
         // Importante! esse é método get é da classe Array List que alFilme herdou
 
         // Atualiza nome do filme na action bar
@@ -56,7 +70,7 @@ public class DadosFilmes extends AppCompatActivity {
         fData.setText(filme.getDataString());
 
         TextView fGenero = (TextView) findViewById(R.id.tvGenero);
-        fGenero.setText(filme.getGenero());
+        fGenero.setText(filme.getfGenero());
 
         // Aparecer o Comentário apenas se Ouver
         ImageView ivComentario = (ImageView) findViewById(R.id.ivComentario);
@@ -69,12 +83,50 @@ public class DadosFilmes extends AppCompatActivity {
             fComentario.setText(sComentario);
     }
 
-    // Verificar esse método !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void onResume(){
+        super.onResume();
+        this.mostraDadosFilme();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        // Popula a ActionBar com os Icones configurados em menu_dados_filme
+        getMenuInflater().inflate(R.menu.menu_dados_filme, menu);
+        return true;
+    }
+
+    // TODO: Verificar esse método
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
                 this.finish();
                 return true;
+
+            case R.id.miShare:
+                // Compartilha os dados deste evento
+                // Monta a String usando stringBuilder
+                StringBuilder strShare = new StringBuilder(200);
+                strShare.append("Assisti o Filme ");
+                strShare.append(filme.getfNome());
+                strShare.append(" em ");
+                strShare.append(filme.getDataString());
+                strShare.append(" no ");
+                strShare.append(filme.getfLocal());
+
+                Intent i = new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_TEXT, strShare.toString());
+                startActivity(Intent.createChooser(i, "Compartilhar o Filme Visto"));
+                return true;
+
+            case R.id.miEditar:
+                // Chama a Activity para Editar os dados deste filme
+                Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);
+                i2.putExtra("FilmeId", String.valueOf(filmePos));
+                // Por que tem esse from 1 ???????????????????????????
+                i2.putExtra("from", "1");
+                startActivity(i2);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

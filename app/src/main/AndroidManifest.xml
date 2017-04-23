@@ -16,9 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DadosFilmes"></activity>
+        <activity android:name=".DadosFilmes" />
+        <activity android:name=".EditaFilme"></activity>
     </application>
-
-
 
 </manifest>

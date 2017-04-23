@@ -1,5 +1,6 @@
 package com.example.echo.filmes_at_cinema2;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,11 +20,13 @@ import java.util.GregorianCalendar;
 // sugestão de utilitário para icones dos apps: http://romannurik.github.io/AndroidAssetStudio/
 // cria os diversos formatos a partir de imagem e outras funções
 
+
 public class MainActivity extends AppCompatActivity {
 
+    // Para ordenação alfabética
     boolean AZ = true;
 
-    // ArrayList, estrutura de dados contendo os filmes vistos
+    // ArrayList estrutura de dados contendo os filmes vistos
     ArrayList<Filme> alFilmes;
     // ArrayAdapter é um adapter para vincular arrays e views, pode ser usado com list views e spinners
     ArrayAdapter<Filme> aaListaFilmes;
@@ -44,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
         lvListaFilmes.setAdapter(aaListaFilmes);
         // Usa o retorno do toString para determinar o texto que será exibido em cada item da lista
 
-        // Verificar toda essa função !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // TODO: Verificar toda essa função
         lvListaFilmes.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int posicao, long id) {
                         Intent i = new Intent(view.getContext(), DadosFilmes.class);
-                        i.putExtra("filmeId", String.valueOf(posicao));
+                        i.putExtra("FilmeId", String.valueOf(posicao));
                         startActivity(i);
                     }
                 }
@@ -64,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void onResume(){
+        super.onResume();
+        aaListaFilmes.notifyDataSetChanged();
+    }
+
     // icones selecionados em xhdpi (compatível com o AVD em uso nos testes), ver demais resoluções
     // sugestão para bilbioteca de ícones: https://materialdesignicons.com/
     // e também http://www.veryicon.com/
@@ -76,15 +84,23 @@ public class MainActivity extends AppCompatActivity {
             case R.id.miAdd:
                 // Adiciona Novo Filme
 
-                String nome = "Test" + alFilmes.size();
-                Filme Filme1 = new Filme("Teste", "DVD", "Acao", new GregorianCalendar());
-                Filme1.setfComentario("Teste Comentario do Filme ...");
-
+                // Cria um novo Objeto Filme1
+                // TODO: Melhorar essa função
+                Filme Filme1 = new Filme("", "", "", new GregorianCalendar());
                 // Adiciona Filmes para popupar a Base
                 alFilmes.add(Filme1);
                 // avisa o adaptador que os dados mudaram, logo a view que mostra os dados precisa ser atualizada
                 aaListaFilmes.notifyDataSetChanged();
-                Toast.makeText(getApplicationContext(), "Adicionado " + nome, Toast.LENGTH_SHORT).show();
+                // Pega a Posição do Filme
+                int filmePos = alFilmes.indexOf(Filme1);
+
+                // Chama a Activity para Editar os dados deste filme
+                Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);
+                i2.putExtra("FilmeId", String.valueOf(filmePos));
+                // TODO: Por que tem esse from 1
+                i2.putExtra("from", "1");
+                startActivity(i2);
+                // TODO: Arrumar a Activity Editar para aparecer oq deve ser colocado em cada campo
 
                 return true;
 

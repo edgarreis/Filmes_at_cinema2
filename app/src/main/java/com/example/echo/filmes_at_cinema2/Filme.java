@@ -53,11 +53,11 @@ public class Filme {
         this.fLocal = fLocal;
     }
 
-    public String getGenero() {
+    public String getfGenero() {
         return Genero;
     }
 
-    public void setGenero(String genero) {
+    public void setfGenero(String genero) {
         Genero = genero;
     }
 
@@ -94,14 +94,11 @@ public class Filme {
                 + " " + Genero;
     }
 
-    // Verificar a Necessidade deste Método !!!!!!!!!!!!!!!!!!!!!!!!!!
+    // TODO: Verificar a Necessidade deste Método
     public String getDataString() {
 
         SimpleDateFormat stf = new SimpleDateFormat("dd.MM.yyyy");
         String sData = stf.format(fData.getTime());
         return sData;
     }
-
-
-
 }
