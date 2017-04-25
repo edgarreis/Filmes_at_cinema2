@@ -1,5 +1,6 @@
 package com.example.echo.filmes_at_cinema2;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 // TODO: Arrumar o Icone OkEdit
 
@@ -77,6 +80,21 @@ public class EditaFilme extends AppCompatActivity {
                 return true;
 
             case R.id.miOkEdit:
+                if(fNome.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Preencha o Nome do Filme",Toast.LENGTH_LONG);
+                    //(findViewById(R.id.lvListaFilmes),"Texto",)
+                    return false;
+                }
+                if(fLocal.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Preencha o Local do Filme",Toast.LENGTH_SHORT);
+                    return false;
+                }
+                if(fGenero.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Preencha o Genero do Filme",Toast.LENGTH_SHORT);
+                    return false;
+                }
+
+
                 // TODO: Arrumar o Botão de Check SAVE
                 filme.setfNome(fNome.getText().toString());
                 filme.setfGenero(fGenero.getText().toString());

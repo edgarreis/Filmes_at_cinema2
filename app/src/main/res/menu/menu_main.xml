@@ -4,7 +4,6 @@
     <item
         android:id="@+id/miAlpha"
         android:icon="@drawable/sort_alphabetical"
-
         app:showAsAction="always"
         android:title="Ordem alfabética" />
     <item
@@ -12,10 +11,28 @@
         android:icon="@drawable/sort_ascending"
         app:showAsAction="always"
         android:title="Ordem cronológica" />
+
     <item
-        android:id="@+id/miAdd"
-        android:icon="@drawable/plus_circle"
-        app:showAsAction="ifRoom"
-        android:title="Adicionar Filme" />
+        android:id="@+id/miConfig"
+        android:icon="@drawable/more"
+        app:showAsAction="always"
+        android:title="Configurações">
+
+        <menu>
+            <item
+                android:id="@+id/miConfigurar"
+                android:title="Configurações"/>
+
+            <item
+                android:id="@+id/miSinc"
+                android:title="Sincronizar"/>
+
+            <item
+                android:id="@+id/miAdd"
+                android:title="Adicionar Filme" />
+
+        </menu>
+
+    </item>
 
 </menu>

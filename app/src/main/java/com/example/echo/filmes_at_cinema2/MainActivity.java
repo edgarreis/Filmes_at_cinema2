@@ -1,5 +1,6 @@
 package com.example.echo.filmes_at_cinema2;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import java.util.GregorianCalendar;
 // sugestão de utilitário para icones dos apps: http://romannurik.github.io/AndroidAssetStudio/
 // cria os diversos formatos a partir de imagem e outras funções
 
+// TODO: Utilizar o Spiner para gerar a lista de Cinemas
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        // TODO: FloatingActionButton
+        //FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        //fab.setOnClickListener(new View.OnClickListener());
+
+
     }
 
     // mais info sobre ActionBar e Toolbars em
@@ -93,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 aaListaFilmes.notifyDataSetChanged();
                 // Pega a Posição do Filme
                 int filmePos = alFilmes.indexOf(Filme1);
+                // Atualiza nome do filme na action bar
+                //ab.setTitle(Filme1.getfNome()); //TODO : it
 
                 // Chama a Activity para Editar os dados deste filme
                 Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);

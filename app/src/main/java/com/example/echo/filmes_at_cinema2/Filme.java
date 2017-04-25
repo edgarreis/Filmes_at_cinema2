@@ -10,26 +10,35 @@ public class Filme {
 
     private String fNome;
     private String fLocal;
-    private String Genero;
+    private String fgenero;
     private GregorianCalendar fData;
     private String fComentario;
 
-    public Filme(String fNome, String fLocal, String genero, GregorianCalendar fData) {
+    public Filme(String fNome, String fLocal, String fgenero, GregorianCalendar fData) {
         this.fNome = fNome;
         this.fLocal = fLocal;
         this.fData = fData;
-        this.Genero = genero;
+        this.fgenero = fgenero;
         this.fComentario = "";
         // Comentario não é necessario passar como parametro,
         // pois nao é um campo obrigatório
     }
 
     // SobreCarga de Construtor
-    public Filme(String fNome, String fLocal, String genero, int dia, int mes, int ano) {
+    public Filme(String fNome, String fLocal, String fgenero, int dia, int mes, int ano) {
         this.fNome = fNome;
         this.fLocal = fLocal;
-        this.Genero = genero;
+        this.fgenero = fgenero;
         this.fData = new GregorianCalendar(ano, mes-1, dia);
+        this.fComentario = "";
+    }
+
+    // SobreCarga de Construtor
+    public Filme() {
+        this.fNome = "";
+        this.fLocal = "";
+        this.fgenero = "";
+        this.fData = new GregorianCalendar();
         this.fComentario = "";
     }
 
@@ -54,11 +63,11 @@ public class Filme {
     }
 
     public String getfGenero() {
-        return Genero;
+        return fgenero;
     }
 
-    public void setfGenero(String genero) {
-        Genero = genero;
+    public void setfGenero(String fgenero) {
+        fgenero = fgenero;
     }
 
     public GregorianCalendar getfData() {
@@ -91,7 +100,7 @@ public class Filme {
     public String toString() {
 
         return fNome + '\n'
-                + " " + Genero;
+                + " " + fgenero;
     }
 
     // TODO: Verificar a Necessidade deste Método

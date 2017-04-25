@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="left|center_vertical"
+                android:hint="Insira o Nome"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </TableRow>
@@ -53,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="left|center_vertical"
+                android:hint="Insira o Genero"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </TableRow>
@@ -75,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="left|center_vertical"
+                android:hint="Insira o Local"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -99,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="left|center_vertical"
+                android:hint="Insira a Data"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
@@ -123,11 +127,9 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="left|center_vertical"
+                android:hint="Insira o Comentário"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-
         </TableRow>
-
-
     </TableLayout>
 </RelativeLayout>
