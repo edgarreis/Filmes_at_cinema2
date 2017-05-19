@@ -198,14 +198,14 @@ public class MainActivity extends AppCompatActivity {
 
                 // a fazer/alterar, é um exemplo de item no menu
                 // como exemplo, vamor mostrar uma snakcbar
-                Snackbar.make(findViewById(R.id.lvListaFilmes), "A Sincronização não está habilitada", Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(R.id.lvListaFilmes), "A Sincronização não está habilitada ainda", Snackbar.LENGTH_LONG)
                         .setAction("Action", null)
                         .show();
                 return true;
 
             case R.id.miConfigurar:
 
-                Snackbar.make(findViewById(R.id.lvListaFilmes), "As Configurações não estão habilitadas", Snackbar.LENGTH_LONG)
+                Snackbar.make(findViewById(R.id.lvListaFilmes), "As Configurações não estão habilitadas ainda", Snackbar.LENGTH_LONG)
                         .setAction("Action", null)
                         .show();
 
