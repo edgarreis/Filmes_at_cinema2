@@ -6,9 +6,29 @@
         android:icon="@drawable/share"
         app:showAsAction="ifRoom"
         android:title="Compartilhar" />
+
+
     <item
-        android:id="@+id/miEditar"
-        android:icon="@drawable/edit"
-        app:showAsAction="ifRoom"
-        android:title="Editar Filme" />
+        android:id="@+id/miMore"
+        android:icon="@drawable/more"
+        app:showAsAction="always"
+        android:title="Mais">
+
+        <menu>
+
+            <item
+                android:id="@+id/miEditar"
+                android:icon="@drawable/edit"
+                app:showAsAction="ifRoom"
+                android:title="Editar Filme" />
+
+            <item
+                android:id="@+id/miRemover"
+                android:icon="@drawable/delet"
+                app:showAsAction="ifRoom"
+                android:title="Remover Filme" />
+
+        </menu>
+    </item>
+
 </menu>

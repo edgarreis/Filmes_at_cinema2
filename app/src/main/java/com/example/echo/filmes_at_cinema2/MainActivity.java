@@ -1,6 +1,7 @@
 package com.example.echo.filmes_at_cinema2;
 
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,10 +24,12 @@ import java.util.GregorianCalendar;
 
 // TODO: Utilizar o Spiner para gerar a lista de Cinemas
 
+
 public class MainActivity extends AppCompatActivity {
 
     // Para ordenação alfabética
     boolean AZ = true;
+    boolean crono = true;
 
     // ArrayList estrutura de dados contendo os filmes vistos
     ArrayList<Filme> alFilmes;
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         lvListaFilmes.setAdapter(aaListaFilmes);
         // Usa o retorno do toString para determinar o texto que será exibido em cada item da lista
 
-        // TODO: Verificar toda essa função
+        // criar um listener para os eventos de onClick nos items da listview
         lvListaFilmes.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int posicao, long id) {
@@ -60,10 +63,23 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        // TODO: FloatingActionButton
-        //FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
-        //fab.setOnClickListener(new View.OnClickListener());
+        // adiciona o Floating Action Button para adicionar filmes
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),EditaFilme.class);
+                i.putExtra("filmeId", 0);
+                // 1 identifica que é inclusão de novo filme
+                i.putExtra("from", 1);
+                startActivity(i);
+            }
+        });
+
+        ActionBar ab = getSupportActionBar(); // acessa a action bar
+        ab.setDisplayHomeAsUpEnabled(true);   // seta retorno <- na action bar
+        ab.setTitle("Filmes App");
 
     }
 
@@ -94,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
                 // Cria um novo Objeto Filme1
                 // TODO: Melhorar essa função
-                Filme Filme1 = new Filme("", "", "", new GregorianCalendar());
+                //Filme Filme1 = new Filme("", "", "", new GregorianCalendar());
+                Filme Filme1 = new Filme();
                 // Adiciona Filmes para popupar a Base
                 alFilmes.add(Filme1);
                 // avisa o adaptador que os dados mudaram, logo a view que mostra os dados precisa ser atualizada
@@ -147,15 +164,50 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.miCrono:
                 // Ordena por Data
+                // TODO: Fazer crescente e descrecente
 
-                Collections.sort(alFilmes, new Comparator<Filme>() {
-                    @Override
-                    public int compare(Filme o1, Filme o2) {
-                        return o1.getfData().compareTo(o2.getfData());
-                    }
-                });
+                if (crono){
+                    // Ordem Crescente
+
+                    crono = false;
+                    Collections.sort(alFilmes, new Comparator<Filme>() {
+                        @Override
+                        public int compare(Filme o1, Filme o2) {
+                            return o1.getfData().compareTo(o2.getfData());
+                        }
+                    });
+
+
+                }else {
+                    // Ordem decrescente
+                    crono = true;
+
+                    Collections.sort(alFilmes, new Comparator<Filme>() {
+                        @Override
+                        public int compare(Filme o1, Filme o2) {
+                            return o2.getfData().compareTo(o1.getfData());
+                        }
+                    });
+                }
 
                 aaListaFilmes.notifyDataSetChanged();
+
+                return true;
+
+            case R.id.miSinc:
+
+                // a fazer/alterar, é um exemplo de item no menu
+                // como exemplo, vamor mostrar uma snakcbar
+                Snackbar.make(findViewById(R.id.lvListaFilmes), "A Sincronização não está habilitada", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null)
+                        .show();
+                return true;
+
+            case R.id.miConfigurar:
+
+                Snackbar.make(findViewById(R.id.lvListaFilmes), "As Configurações não estão habilitadas", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null)
+                        .show();
 
                 return true;
 

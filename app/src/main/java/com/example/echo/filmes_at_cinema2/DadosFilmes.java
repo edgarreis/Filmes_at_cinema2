@@ -9,10 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import java.util.ArrayList;
 
-// TODO: Arrumar os ICONES SHARE E EDIT
 public class DadosFilmes extends AppCompatActivity {
 
     // ArrayList, estrutura de dados contendo os filmes vistos
@@ -44,7 +43,13 @@ public class DadosFilmes extends AppCompatActivity {
 
     }
 
-    public void mostraDadosFilme(){
+    @Override
+    public void onResume(){
+        super.onResume();
+        this.mostraDadosFilme();
+    }
+
+    public void mostraDadosFilme() {
 
         // Pegar os Filmes
         alFilme = ListaFilmes.getsListaFilmes(getApplicationContext()).getAlFilmes();
@@ -76,16 +81,15 @@ public class DadosFilmes extends AppCompatActivity {
         ImageView ivComentario = (ImageView) findViewById(R.id.ivComentario);
         TextView fComentario = (TextView) findViewById(R.id.tvComentario);
         String sComentario = filme.getfComentario();
-
-        if (sComentario.isEmpty()){
+        if (sComentario.isEmpty()) {
             ivComentario.setVisibility(View.INVISIBLE);
-        } else
+            fComentario.setText("");
+        }
+        else {
+            ivComentario.setVisibility(View.VISIBLE);
             fComentario.setText(sComentario);
-    }
+        }
 
-    public void onResume(){
-        super.onResume();
-        this.mostraDadosFilme();
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -119,12 +123,29 @@ public class DadosFilmes extends AppCompatActivity {
                 return true;
 
             case R.id.miEditar:
+
                 // Chama a Activity para Editar os dados deste filme
-                Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);
-                i2.putExtra("FilmeId", String.valueOf(filmePos));
-                // Por que tem esse from 1 ???????????????????????????
-                i2.putExtra("from", "1");
+                Intent i2 = new Intent(this, EditaFilme.class);
+                i2.putExtra("FilmeId", filmePos);
+                // 2 identifica que é edição de filme existente
+                i2.putExtra("from", 2);
                 startActivity(i2);
+                return true;
+
+
+//                // Chama a Activity para Editar os dados deste filme
+//                Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);
+//                i2.putExtra("FilmeId", String.valueOf(filmePos));
+//                // 2 identifica que é edição de filme existente
+//                i2.putExtra("from", "2");
+//                startActivity(i2);
+//                return true;
+
+            case R.id.miRemover:
+                // Remove o  Filmes do ArrayList
+                alFilme.remove(filme);
+                Toast.makeText(getApplicationContext(),"O Filme " + filme.getfNome() + " foi removido", Toast.LENGTH_LONG).show();
+                this.finish();
                 return true;
 
             default:

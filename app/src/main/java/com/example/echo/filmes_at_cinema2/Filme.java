@@ -67,7 +67,7 @@ public class Filme {
     }
 
     public void setfGenero(String fgenero) {
-        fgenero = fgenero;
+        this.fgenero = fgenero;
     }
 
     public GregorianCalendar getfData() {
