@@ -58,6 +58,7 @@ public class ListaFilmes {
 
     // Retorna o Conjunto de Filmes
     public ArrayList<Filme> getAlFilmes() {
+
         return alFilmes;
     }
 }

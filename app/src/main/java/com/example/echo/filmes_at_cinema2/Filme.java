@@ -63,10 +63,12 @@ public class Filme {
     }
 
     public String getfGenero() {
+
         return fgenero;
     }
 
     public void setfGenero(String fgenero) {
+
         this.fgenero = fgenero;
     }
 
@@ -86,6 +88,15 @@ public class Filme {
         setfData(new GregorianCalendar(ano, mes-1, dia));
     }
 
+    // getfDataString para retorno de uma string para um setText
+    public String getfDataString() {
+
+        SimpleDateFormat stf = new SimpleDateFormat("dd.MM.yyyy");
+        String sData = stf.format(fData.getTime());
+        return sData;
+    }
+
+
     public String getfComentario() {
 
         return fComentario;
@@ -103,11 +114,5 @@ public class Filme {
                 + " " + fgenero;
     }
 
-    // TODO: Verificar a Necessidade deste Método
-    public String getDataString() {
 
-        SimpleDateFormat stf = new SimpleDateFormat("dd.MM.yyyy");
-        String sData = stf.format(fData.getTime());
-        return sData;
-    }
 }

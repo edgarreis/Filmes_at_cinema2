@@ -102,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_column="2"
                 android:layout_gravity="left|center_vertical"
+                android:onClick="showDataPickerDialog"
                 android:hint="Insira a Data"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 

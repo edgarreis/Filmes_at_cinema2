@@ -13,7 +13,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 // TODO: Usar na Visualização do Filme o Scrionlling Activtiy
@@ -23,13 +22,13 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
     // ArrayList, estrutura de dados contendo os Filmes
     ArrayList<Filme> alFilmes;
     Filme filme;
-    int filmePos;
     EditText fNome;
     EditText fGenero;
     EditText fLocal;
     EditText fComentario;
     TextView fData;
     GregorianCalendar fDataGC;
+    int filmePos;
     int iActId;
 
     @Override
@@ -48,7 +47,7 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
         ab.setDisplayHomeAsUpEnabled(true);
 
         // Pega o Código do Filme
-        filmePos = Integer.parseInt(extras.getString("FilmeId"));
+        //filmePos = Integer.parseInt(extras.getString("filmeId"));
         /*no objeto Bundle recebemos o from e o filmeId
           from = 1 identifica que é inclusão de novo filme
                    ou seja, quem chamou foi a MainActivity
@@ -57,6 +56,7 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
           filmeId = posição na ListView, igual a posição no ArrayList alFilmes
           pega então o código do filme e o codigo da activity que chamou
         */
+        filmePos = extras.getInt("filmeId");
         iActId = extras.getInt("from");
         // Pega os Filmes
         alFilmes = ListaFilmes.getsListaFilmes(getApplicationContext()).getAlFilmes();
@@ -80,17 +80,18 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
             fNome.setText(filme.getfNome());
             fGenero.setText(filme.getfGenero());
             fLocal.setText(filme.getfLocal());
-            fData.setText(filme.getDataString());
+            fDataGC = filme.getfData();
+            //fData.setText(filme.getfDataString());
             //String sComentario = filme.getfComentario();
             fComentario.setText(filme.getfComentario());
 
-        } else if (iActId == 1) {
+        } else {
             // Novo Filme
 
             ab.setTitle("Novo Filme");
             fDataGC = new GregorianCalendar();
             filme = new Filme();
-            fData.setText(filme.getDataString());
+            fData.setText(filme.getfDataString());
         }
 
     }
@@ -120,9 +121,7 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
         fData.setText(dayOfMonth + "/" + (month+1) + "/" + year);
         // Cria novo objeto com a data escolhida para posterior atualização do objeto filme
         fDataGC = new GregorianCalendar(year, month, dayOfMonth);
-
     }
-
 
     public boolean onOptionsItemSelected(MenuItem item){
 

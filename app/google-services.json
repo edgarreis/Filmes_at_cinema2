@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "677856417169",
+    "firebase_url": "https://aerial-jigsaw-145707.firebaseio.com",
+    "project_id": "aerial-jigsaw-145707",
+    "storage_bucket": "aerial-jigsaw-145707.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677856417169:android:3aa2e193dffebd5f",
+        "android_client_info": {
+          "package_name": "com.example.echo.filmes_at_cinema2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677856417169-0jbbaqiitce9bhqbtc8h11b2l1t0dahb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.echo.filmes_at_cinema2",
+            "certificate_hash": "7768e0dbfe4b2a3a669344432504582e5403eb55"
+          }
+        },
+        {
+          "client_id": "677856417169-ama486i4s99g0p1l9udauknr73e4mu6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcVNWPy2peDAp8NS1l2TPeDozGySSwWdE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677856417169-ama486i4s99g0p1l9udauknr73e4mu6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

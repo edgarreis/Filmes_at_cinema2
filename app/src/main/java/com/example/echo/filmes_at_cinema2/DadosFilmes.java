@@ -72,7 +72,7 @@ public class DadosFilmes extends AppCompatActivity {
 
 
         TextView fData = (TextView) findViewById(R.id.tvData);
-        fData.setText(filme.getDataString());
+        fData.setText(filme.getfDataString());
 
         TextView fGenero = (TextView) findViewById(R.id.tvGenero);
         fGenero.setText(filme.getfGenero());
@@ -112,7 +112,7 @@ public class DadosFilmes extends AppCompatActivity {
                 strShare.append("Assisti o Filme ");
                 strShare.append(filme.getfNome());
                 strShare.append(" em ");
-                strShare.append(filme.getDataString());
+                strShare.append(filme.getfDataString());
                 strShare.append(" no ");
                 strShare.append(filme.getfLocal());
 
@@ -126,7 +126,7 @@ public class DadosFilmes extends AppCompatActivity {
 
                 // Chama a Activity para Editar os dados deste filme
                 Intent i2 = new Intent(this, EditaFilme.class);
-                i2.putExtra("FilmeId", filmePos);
+                i2.putExtra("filmeId", filmePos);
                 // 2 identifica que é edição de filme existente
                 i2.putExtra("from", 2);
                 startActivity(i2);
@@ -135,7 +135,7 @@ public class DadosFilmes extends AppCompatActivity {
 
 //                // Chama a Activity para Editar os dados deste filme
 //                Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);
-//                i2.putExtra("FilmeId", String.valueOf(filmePos));
+//                i2.putExtra("filmeId", String.valueOf(filmePos));
 //                // 2 identifica que é edição de filme existente
 //                i2.putExtra("from", "2");
 //                startActivity(i2);

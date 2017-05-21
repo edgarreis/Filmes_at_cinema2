@@ -105,29 +105,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+
+            case android.R.id.home:
+                this.finish();
+
+                return true;
+
             case R.id.miAdd:
                 // Adiciona Novo Filme
 
                 // Cria um novo Objeto Filme1
-                // TODO: Melhorar essa função
-                //Filme Filme1 = new Filme("", "", "", new GregorianCalendar());
-                Filme Filme1 = new Filme();
-                // Adiciona Filmes para popupar a Base
-                alFilmes.add(Filme1);
-                // avisa o adaptador que os dados mudaram, logo a view que mostra os dados precisa ser atualizada
-                aaListaFilmes.notifyDataSetChanged();
-                // Pega a Posição do Filme
-                int filmePos = alFilmes.indexOf(Filme1);
-                // Atualiza nome do filme na action bar
-                //ab.setTitle(Filme1.getfNome()); //TODO : it
-
-                // Chama a Activity para Editar os dados deste filme
-                Intent i2 = new Intent(this.getBaseContext(), EditaFilme.class);
-                i2.putExtra("FilmeId", String.valueOf(filmePos));
-                // TODO: Por que tem esse from 1
-                i2.putExtra("from", "1");
-                startActivity(i2);
-                // TODO: Arrumar a Activity Editar para aparecer oq deve ser colocado em cada campo
+                Intent i = new Intent(getApplicationContext(),EditaFilme.class);
+                i.putExtra("filmeId", 0);
+                // 1 identifica que é inclusão de novo filme
+                i.putExtra("from", 1);
+                startActivity(i);
 
                 return true;
 
