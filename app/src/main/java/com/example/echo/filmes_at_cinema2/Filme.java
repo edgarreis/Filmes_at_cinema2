@@ -3,16 +3,18 @@ package com.example.echo.filmes_at_cinema2;
 import android.text.Html;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
-public class Filme {
+public class Filme implements Serializable{
 
     private String fNome;
     private String fLocal;
     private String fgenero;
     private GregorianCalendar fData;
     private String fComentario;
+    private int fImagem;
 
     public Filme(String fNome, String fLocal, String fgenero, GregorianCalendar fData) {
         this.fNome = fNome;
@@ -105,6 +107,21 @@ public class Filme {
     public void setfComentario(String fComentario) {
 
         this.fComentario = fComentario;
+    }
+
+    public int getfImagem() {
+        return fImagem;
+    }
+
+    public void setfImagem(int fImagem) {
+        this.fImagem = fImagem;
+    }
+
+    public String getfLocalData(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM YY");
+        // Gambiarra Para Caber A Data e o Local no Item da Lista do Filme
+        // ToDo: Arrumar getfLocalData
+        return String.format("%1$-" + (60-fLocal.length()) + "s", fLocal) + sdf.format(fData.getTime());
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.echo.filmes_at_cinema2;
 
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -92,6 +93,12 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
             fDataGC = new GregorianCalendar();
             filme = new Filme();
             fData.setText(filme.getfDataString());
+
+            // Utilizando as Preferencias do Usuario
+            String local = PreferenceManager.getDefaultSharedPreferences(this).getString(ListaFilmes.PREF_LOCAL,null);
+            if (local != null){
+                fLocal.setText(local);
+            }
         }
 
     }
@@ -158,6 +165,8 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
                     //filme tem nome e local, pode adicionar ao ArrayList
                     alFilmes.add(filme);
                 }
+                ListaFilmes.salvar(); // chama o metodo static para salvar a Lista de Filmes em disco
+                // pois houve alteração de algum existente ou inclusão de um novo
 
                 this.finish();
                 return true;

@@ -145,6 +145,8 @@ public class DadosFilmes extends AppCompatActivity {
                 // Remove o  Filmes do ArrayList
                 alFilme.remove(filme);
                 Toast.makeText(getApplicationContext(),"O Filme " + filme.getfNome() + " foi removido", Toast.LENGTH_LONG).show();
+                ListaFilmes.salvar(); // chama o metodo static para salvar a Lista de Filmes em disco
+                // pois houve alteração de algum existente ou inclusão de um novo
                 this.finish();
                 return true;
 

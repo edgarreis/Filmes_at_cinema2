@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
     // ArrayList estrutura de dados contendo os filmes vistos
     ArrayList<Filme> alFilmes;
     // ArrayAdapter é um adapter para vincular arrays e views, pode ser usado com list views e spinners
-    ArrayAdapter<Filme> aaListaFilmes;
+    // ArrayAdapter<Filme> aaListaFilmes;
+    FilmeAdapter faListaFilmes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
         //Associa o Elemento da UI com a variável
         ListView lvListaFilmes = (ListView) findViewById(R.id.lvListaFilmes);
         // Utiliza o ArrayAdatpar para mostrar os dados do ArrayList de filmes alFilmes
-        aaListaFilmes = new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, alFilmes);
+        //aaListaFilmes = new ArrayAdapter<Filme>(this, android.R.layout.simple_list_item_1, alFilmes);
+        faListaFilmes = new FilmeAdapter(this, alFilmes);
         // Mostrá os Filmes listview lvListaFilmes, setada com o método setAdapter
-        lvListaFilmes.setAdapter(aaListaFilmes);
+        //lvListaFilmes.setAdapter(aaListaFilmes);
+        lvListaFilmes.setAdapter(faListaFilmes);
         // Usa o retorno do toString para determinar o texto que será exibido em cada item da lista
 
         // criar um listener para os eventos de onClick nos items da listview
@@ -93,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onResume(){
         super.onResume();
-        aaListaFilmes.notifyDataSetChanged();
+        //aaListaFilmes.notifyDataSetChanged();
+        faListaFilmes.notifyDataSetChanged();
     }
 
     // icones selecionados em xhdpi (compatível com o AVD em uso nos testes), ver demais resoluções
@@ -151,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                aaListaFilmes.notifyDataSetChanged();
+                //aaListaFilmes.notifyDataSetChanged();
+                faListaFilmes.notifyDataSetChanged();
 
                 return true;
 
@@ -183,7 +188,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
 
-                aaListaFilmes.notifyDataSetChanged();
+                //aaListaFilmes.notifyDataSetChanged();
+                faListaFilmes.notifyDataSetChanged();
 
                 return true;
 
@@ -198,10 +204,8 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.miConfigurar:
 
-                Snackbar.make(findViewById(R.id.lvListaFilmes), "As Configurações não estão habilitadas", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
-
+                Intent conf = new Intent(getApplicationContext(), Config.class);
+                startActivity(conf);
                 return true;
 
             default:
