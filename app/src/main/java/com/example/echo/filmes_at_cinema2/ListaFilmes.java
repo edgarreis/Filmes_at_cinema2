@@ -90,7 +90,7 @@ public class ListaFilmes implements Serializable{
             objectOutputStream.writeObject(this.alFilmes);
             objectOutputStream.close();
             fileOutputStream.close();
-            Toast.makeText(this.appContext.getApplicationContext(), "Salvou arquivo...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.appContext.getApplicationContext(), "Arquivo Salvo...", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this.appContext.getApplicationContext(), "IOException..." + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -105,7 +105,7 @@ public class ListaFilmes implements Serializable{
             this.alFilmes = (ArrayList<Filme>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-            Toast.makeText(this.appContext.getApplicationContext(), "Leu aquivo... ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.appContext.getApplicationContext(), "Lend Arquivo... ", Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             Toast.makeText(this.appContext.getApplicationContext(), "Arquivo ainda não existe...", Toast.LENGTH_LONG).show();
         } catch (IOException e) {

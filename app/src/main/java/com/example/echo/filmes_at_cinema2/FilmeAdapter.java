@@ -9,11 +9,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
 public class FilmeAdapter extends ArrayAdapter<Filme> {
 
     ArrayList<Filme> alFilmes;
     private Context context;
+    public GregorianCalendar fData;
 
     // TODO: Não entendi este Contrutor
     public FilmeAdapter(Context context, ArrayList<Filme> alFilmes) {
@@ -35,8 +37,14 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
         TextView tvfNome = (TextView) convertView.findViewById(R.id.tvfNome);
         tvfNome.setText(filme.getfNome());
 
+        //TextView tvfLocal = (TextView) convertView.findViewById(R.id.tvfLocal);
+        //tvfLocal.setText(filme.getfLocalData());
+
         TextView tvfLocal = (TextView) convertView.findViewById(R.id.tvfLocal);
-        tvfLocal.setText(filme.getfLocalData());
+        tvfLocal.setText(filme.getfLocal());
+
+        TextView tvfLocal2 = (TextView) convertView.findViewById(R.id.tvfLocal2);
+        tvfLocal2.setText(filme.getfLocal());
 
         return convertView;
     }
