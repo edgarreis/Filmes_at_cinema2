@@ -93,7 +93,7 @@ public class Filme implements Serializable{
     // getfDataString para retorno de uma string para um setText
     public String getfDataString() {
 
-        SimpleDateFormat stf = new SimpleDateFormat("dd.MM.yyyy");
+        SimpleDateFormat stf = new SimpleDateFormat("EEE, d MMM yyyy");
         String sData = stf.format(fData.getTime());
         return sData;
     }
@@ -127,8 +127,7 @@ public class Filme implements Serializable{
     @Override
     public String toString() {
 
-        return fNome + '\n'
-                + " " + fgenero;
+        return fgenero;
     }
 
 

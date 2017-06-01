@@ -102,7 +102,10 @@ public class DadosFilmes extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
+
                 this.finish();
+                overridePendingTransition(R.anim.res_anim_fadein, R.anim.res_anim_fadeout);
+
                 return true;
 
             case R.id.miShare:

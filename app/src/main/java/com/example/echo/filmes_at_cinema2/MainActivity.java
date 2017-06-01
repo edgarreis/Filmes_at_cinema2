@@ -2,6 +2,8 @@ package com.example.echo.filmes_at_cinema2;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(view.getContext(), DadosFilmes.class);
                         i.putExtra("FilmeId", String.valueOf(posicao));
                         startActivity(i);
+                        overridePendingTransition(R.anim.res_anim_fadein, R.anim.res_anim_fadeout);
+
                     }
                 }
         );
@@ -72,11 +76,24 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),EditaFilme.class);
+                //Intent i = new Intent(getApplicationContext(),EditaFilme.class);
+                Intent i = new Intent(getApplicationContext(), EditaFilme.class);
                 i.putExtra("filmeId", 0);
                 // 1 identifica que é inclusão de novo filme
                 i.putExtra("from", 1);
+                //startActivity(i);
+
+
                 startActivity(i);
+                overridePendingTransition(R.anim.res_anim_fadein, R.anim.res_anim_fadeout);
+
+// Em fragments (provavelmente já possúi um código parecido com este)
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.res_anim_fadein, R.anim.res_anim_fadeout); //animação aqui
+                transaction.commit();
+
+
             }
         });
 
@@ -125,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 // 1 identifica que é inclusão de novo filme
                 i.putExtra("from", 1);
                 startActivity(i);
+
+                overridePendingTransition(R.anim.res_anim_fadein, R.anim.res_anim_fadeout);
 
                 return true;
 

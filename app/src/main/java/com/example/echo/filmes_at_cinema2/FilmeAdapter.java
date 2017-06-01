@@ -40,11 +40,11 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
         //TextView tvfLocal = (TextView) convertView.findViewById(R.id.tvfLocal);
         //tvfLocal.setText(filme.getfLocalData());
 
-        TextView tvfLocal = (TextView) convertView.findViewById(R.id.tvfLocal);
-        tvfLocal.setText(filme.getfLocal());
+        TextView tvfGenero = (TextView) convertView.findViewById(R.id.tvfGenero);
+        tvfGenero.setText(filme.getfLocal());
 
-        TextView tvfLocal2 = (TextView) convertView.findViewById(R.id.tvfLocal2);
-        tvfLocal2.setText(filme.getfLocal());
+        TextView tvfData = (TextView) convertView.findViewById(R.id.tvfData);
+        tvfData.setText(filme.getfDataString());
 
         return convertView;
     }

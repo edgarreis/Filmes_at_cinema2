@@ -105,7 +105,7 @@ public class ListaFilmes implements Serializable{
             this.alFilmes = (ArrayList<Filme>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-            Toast.makeText(this.appContext.getApplicationContext(), "Lend Arquivo... ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this.appContext.getApplicationContext(), "Lendo Arquivo... ", Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             Toast.makeText(this.appContext.getApplicationContext(), "Arquivo ainda não existe...", Toast.LENGTH_LONG).show();
         } catch (IOException e) {

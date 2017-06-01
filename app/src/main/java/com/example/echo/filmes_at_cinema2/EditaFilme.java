@@ -169,6 +169,8 @@ public class EditaFilme extends AppCompatActivity implements DatePickerDialog.On
                 // pois houve alteração de algum existente ou inclusão de um novo
 
                 this.finish();
+                overridePendingTransition(R.anim.res_anim_fadein, R.anim.res_anim_fadeout);
+
                 return true;
 
             default:

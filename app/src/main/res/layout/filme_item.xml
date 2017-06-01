@@ -33,15 +33,13 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvfLocal2"
+                android:id="@+id/tvfGenero"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/tvfLocal"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/tvfLocal"
                 android:text="Texto 2"
                 android:textAlignment="textStart"
                 android:textAppearance="?android:attr/textAppearanceSmall"
@@ -49,13 +47,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvfLocal"
+                android:id="@+id/tvfData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvfNome"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:text="Small Text1111111111111"
+                android:text="Texto 3"
                 android:textAlignment="textStart"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 app:layout_constraintRight_toRightOf="parent"
