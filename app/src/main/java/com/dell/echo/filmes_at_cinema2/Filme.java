@@ -1,7 +1,4 @@
-package com.example.echo.filmes_at_cinema2;
-
-import android.text.Html;
-import android.widget.TextView;
+package com.dell.echo.filmes_at_cinema2;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

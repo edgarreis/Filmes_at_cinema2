@@ -1,7 +1,6 @@
-package com.example.echo.filmes_at_cinema2;
+package com.dell.echo.filmes_at_cinema2;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -12,7 +11,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.io.NotSerializableException;
 
 // criando a lista de filmes usando o pattern singleton
 // ou seja, uma classe que permite a existência de apenas uma instância de sí mesma

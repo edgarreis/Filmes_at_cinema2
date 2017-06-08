@@ -1,4 +1,4 @@
-package com.example.echo.filmes_at_cinema2;
+package com.dell.echo.filmes_at_cinema2;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,14 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.content.Intent;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.GregorianCalendar;
 
 // icone da aplicação alterado em mipmap com arquivos correspondentes a cada resolução
 // sugestão de utilitário para icones dos apps: http://romannurik.github.io/AndroidAssetStudio/

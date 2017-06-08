@@ -1,4 +1,4 @@
-package com.example.echo.filmes_at_cinema2;
+package com.dell.echo.filmes_at_cinema2;
 
 import org.junit.Test;
 

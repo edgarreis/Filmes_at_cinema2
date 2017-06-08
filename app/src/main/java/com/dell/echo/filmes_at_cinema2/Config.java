@@ -1,4 +1,4 @@
-package com.example.echo.filmes_at_cinema2;
+package com.dell.echo.filmes_at_cinema2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
